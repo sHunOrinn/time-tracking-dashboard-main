@@ -1,0 +1,520 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Primary colors */
+  --purple-600: hsl(246, 80%, 60%);
+  --orange-300: hsl(15, 100%, 70%);
+  --blue-300: hsl(195, 74%, 62%);
+  --pink-400: hsl(348, 100%, 68%);
+  --green-400: hsl(145, 58%, 55%);
+  --purple-700: hsl(264, 64%, 52%);
+  --yellow-300: hsl(43, 84%, 65%);
+
+  /* Neutral colors */
+  --navy-950: hsl(226, 43%, 10%);
+  --navy-900: hsl(235, 46%, 20%);
+  --purple-500: hsl(235, 45%, 61%);
+  --navy-200: hsl(236, 100%, 87%);
+
+  /* Typography */
+  --font-size-body: 18px;
+  --font-family: 'Rubik', sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--navy-950);
+    color: hsl(0, 0%, 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* main{ */
+    /* max-width: 1200px; */
+    /* max-width: 100vh; */
+    /* margin: 0 auto; */
+    /* padding: 2rem; */
+/* } */
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.dashboard .person{
+    grid-column: 1/2;
+    grid-row: span 2;
+    min-width: 300px;
+    background-color: var(--navy-900);
+    border-radius: 20px;
+    padding: 0;
+    padding-top: 180px; /* Đủ để header không che timeframe */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.dashboard .person .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: var(--purple-600);
+    border-radius: 15px;
+    padding: 2rem 2rem 0 2rem;
+    color: #fff;
+}
+
+.dashboard .person .header img {
+    border: 3px solid #fff;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    margin-bottom: 1.5rem;
+}
+
+.dashboard .person .header p {
+    opacity: 0.7;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+}
+
+.dashboard .person .header h1 {
+    font-size: 3rem;
+    font-weight: 300;
+    line-height: 1.1;
+}
+
+.dashboard .person .timeframe {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+    position: absolute;
+    top: 70%;
+    left: 10%;
+    right: 0;
+    /* padding: 2rem;
+    padding-top: 8rem; */
+}
+
+.dashboard .person .timeframe button {
+    background: none;
+    color: var(--purple-500);
+    border: none;
+    font-size: 1.1rem;
+    opacity: 0.7;
+    cursor: pointer;
+    transition: color 0.2s, opacity 0.2s;
+    padding: 0;
+}
+
+.dashboard .person .timeframe button:hover,
+.dashboard .person .timeframe button.active {
+    color: #fff;
+    opacity: 1;
+}
+
+.dashboard .work-hours {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    background-color: var(--navy-900);
+    border-radius: 20px;
+    padding: 2rem 2rem 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-width: 220px;
+    min-height: 180px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    /* margin-top: 2rem; */
+}
+
+.dashboard .work-hours::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: var(--orange-300) url('./images/icon-work.svg') no-repeat 90% 50%;
+    border-radius: 20px 20px 0 0;
+    z-index: 1;
+}
+
+.dashboard .work-time {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    border-radius: 20px 20px 0 0;
+    margin-top: 2rem;
+    padding-top: 0.5rem;
+}
+
+.dashboard .work-time div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard .work-time p {
+    margin: 0;
+    font-size: 1.1rem;
+    opacity: 0.7;
+}
+
+.dashboard .work-time p:nth-child(2) {
+    font-size: 2.5rem;
+    font-weight: 300;
+    opacity: 1;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard .work-time p:nth-child(3) {
+    font-size: 1rem;
+    opacity: 0.7;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard .play-hours {
+    grid-column: 3/4;
+    grid-row: 1/2;
+    background-color: var(--navy-900);
+    border-radius: 20px;
+    padding: 2rem 2rem 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-width: 220px;
+    min-height: 180px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    /* margin-top: 2rem; */
+}
+
+.dashboard .play-hours::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: var(--blue-300) url('images/icon-play.svg') no-repeat 90% 50%;
+    border-radius: 20px 20px 0 0;
+    z-index: 1;
+}
+
+.dashboard .play-time {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    border-radius: 20px 20px 0 0;
+    margin-top: 2rem;
+    padding-top: 0.5rem;
+}
+
+.dashboard .play-time div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard .play-time p {
+    margin: 0;
+    font-size: 1.1rem;
+    opacity: 0.7;
+}
+
+.dashboard .play-time p:nth-child(2) {
+    font-size: 2.5rem;
+    font-weight: 300;
+    opacity: 1;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard .play-time p:nth-child(3) {
+    font-size: 1rem;
+    opacity: 0.7;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard .study-hours {
+    grid-column: 4/5;
+    grid-row: 1/2;
+    background-color: var(--navy-900);
+    border-radius: 20px;
+    padding: 2rem 2rem 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-width: 220px;
+    min-height: 180px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    /* margin-top: 2rem; */
+}
+
+.dashboard .study-hours::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: var(--pink-400) url('images/icon-study.svg') no-repeat 90% 50%;
+    border-radius: 20px 20px 0 0;
+    z-index: 1;
+}
+
+.dashboard .study-time {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    border-radius: 20px 20px 0 0;
+    margin-top: 2rem;
+    padding-top: 0.5rem;
+}
+
+.dashboard .study-time div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard .study-time p {
+    margin: 0;
+    font-size: 1.1rem;
+    opacity: 0.7;
+}
+
+.dashboard .study-time p:nth-child(2) {
+    font-size: 2.5rem;
+    font-weight: 300;
+    opacity: 1;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard .study-time p:nth-child(3) {
+    font-size: 1rem;
+    opacity: 0.7;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard .exercise-hours {
+    grid-column: 2/3;
+    grid-row: 2/3;
+    background-color: var(--navy-900);
+    border-radius: 20px;
+    padding: 2rem 2rem 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-width: 220px;
+    min-height: 180px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    margin-top: 2rem;
+}
+
+.dashboard .exercise-hours::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: var(--green-400) url('images/icon-exercise.svg') no-repeat 90% 50%;
+    border-radius: 20px 20px 0 0;
+    z-index: 1;
+}
+
+.dashboard .exercise-time {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    border-radius: 20px 20px 0 0;
+    margin-top: 2rem;
+    padding-top: 0.5rem;
+}
+
+.dashboard .exercise-time div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard .exercise-time p {
+    margin: 0;
+    font-size: 1.1rem;
+    opacity: 0.7;
+}
+
+.dashboard .exercise-time p:nth-child(2) {
+    font-size: 2.5rem;
+    font-weight: 300;
+    opacity: 1;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard .exercise-time p:nth-child(3) {
+    font-size: 1rem;
+    opacity: 0.7;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard .social-hours {
+    grid-column: 3/4;
+    grid-row: 2/3;
+    background-color: var(--navy-900);
+    border-radius: 20px;
+    padding: 2rem 2rem 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-width: 220px;
+    min-height: 180px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    margin-top: 2rem;
+}
+
+.dashboard .social-hours::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: var(--purple-700) url('images/icon-social.svg') no-repeat 90% 50%;
+    border-radius: 20px 20px 0 0;
+    z-index: 1;
+}
+
+.dashboard .social-time {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    border-radius: 20px 20px 0 0;
+    margin-top: 2rem;
+    padding-top: 0.5rem;
+}
+
+.dashboard .social-time div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard .social-time p {
+    margin: 0;
+    font-size: 1.1rem;
+    opacity: 0.7;
+}
+
+.dashboard .social-time p:nth-child(2) {
+    font-size: 2.5rem;
+    font-weight: 300;
+    opacity: 1;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard .social-time p:nth-child(3) {
+    font-size: 1rem;
+    opacity: 0.7;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard .self-care-hours {
+    grid-column: 4/5;
+    grid-row: 2/3;
+    background-color: var(--navy-900);
+    border-radius: 20px;
+    padding: 2rem 2rem 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-width: 220px;
+    min-height: 180px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    margin-top: 2rem;
+}
+
+.dashboard .self-care-hours::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: var(--yellow-300) url('images/icon-self-care.svg') no-repeat 90% 50%;
+    border-radius: 20px 20px 0 0;
+    z-index: 1;
+}
+
+.dashboard .self-care-time {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    border-radius: 20px 20px 0 0;
+    margin-top: 2rem;
+    padding-top: 0.5rem;
+}
+
+.dashboard .self-care-time div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard .self-care-time p {
+    margin: 0;
+    font-size: 1.1rem;
+    opacity: 0.7;
+}
+
+.dashboard .self-care-time p:nth-child(2) {
+    font-size: 2.5rem;
+    font-weight: 300;
+    opacity: 1;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard .self-care-time p:nth-child(3) {
+    font-size: 1rem;
+    opacity: 0.7;
+    margin-bottom: 0.5rem;
+}
