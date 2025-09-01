@@ -13,14 +13,14 @@ function renderData() {
     for (let i = 0; i < data.length; i++) {
         // Cập nhật số giờ hiện tại
         hours[i].textContent = data[i].timeframes[timeFrame].current
-            + (data[i].timeframes[timeFrame].current === 1 ? 'hr' : 'hrs');
+            + (data[i].timeframes[timeFrame].current <= 1 ? 'hr' : 'hrs');
         // Cập nhật số giờ trước đó
         let label = '';
         if (timeFrame === 'daily') label = 'Yesterday';
         else if (timeFrame === 'weekly') label = 'Last Week';
         else label = 'Last Month';
         previous_hours[i].textContent = `${label} - ${data[i].timeframes[timeFrame]
-            .previous}${data[i].timeframes[timeFrame].previous === 1 ? 'hr' : 'hrs'}`;
+            .previous}${data[i].timeframes[timeFrame].previous <= 1 ? 'hr' : 'hrs'}`;
     }
 }
 
